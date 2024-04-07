@@ -73,7 +73,6 @@ export const blockUser = async (id: string) => {
             blocked: true
         },
     });
-    console.log("Blocked user", block);
 
     return block;
 

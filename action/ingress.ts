@@ -76,12 +76,6 @@ export const createIngress = async (ingressType: IngressInput) => {
     options.bypassTranscoding = false;
   }
 
-/*   if (ingressType === IngressInput.WHIP_INPUT) {
-    options.bypassTranscoding = true;
-  } else {
-    options
-  };
- */
 
   const ingress = await ingressClient.createIngress(
     ingressType,

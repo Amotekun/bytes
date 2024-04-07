@@ -1,8 +1,32 @@
-export default function CreatorPage() {
+import { StreamPlayer } from "@/components/stream-player";
+import { getUserByUsername } from "@/lib/user-service";
+import { currentUser } from "@clerk/nextjs";
+
+interface CreatorPageProps {
+    params: {username: string};
+};
+
+const CreatorPage: React.FC<CreatorPageProps> = async({
+    params
+}) => {
+    const externalUser = await currentUser();
+    const user = await getUserByUsername(params.username);
+
+    if (!user || user.externalUserId !== externalUser?.id || !user.stream) {
+        throw new Error("Unauthorized");
+    }
+
     return (
-        <div>
-            Creator Page
+        <div className="h-full">
+            <StreamPlayer 
+                user={user}
+                stream={user.stream}
+                isFollowing
+            />
         </div>
     )
 }
 
+export default CreatorPage;
+
+/* TODO: ADD STREAM PLAYER SKELETON TO THE LOADING PAGE. ALTHOUGH WE HAVEN'T CREAETED IT YET */

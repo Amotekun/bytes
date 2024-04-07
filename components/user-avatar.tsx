@@ -35,15 +35,21 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
     username,
     imageUrl,
     isLive,
-    showBadge 
+    showBadge ,
+    size,
 }) => {
     const canShowBadge = showBadge && isLive;
+
+    const firstChar = username ? username[0] : "";
+    const lastChar = username ? username[username.length - 1] : "";
+
 
     return (
         <div className="relative">
             <Avatar
                 className={cn(
-                    isLive && "ring-2 ring-rose-500 border border-background "
+                    isLive && "ring-2 ring-rose-500 border border-background ",
+                    avatarSizes({size})
 
                 )}
             >
@@ -52,8 +58,8 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
                     className="object-cover"
                 />
                 <AvatarFallback>
-                    {username[0]}
-                    {username[username.length -1]}
+                    {firstChar}
+                    {lastChar}
                 </AvatarFallback>
             </Avatar>
             {canShowBadge && (

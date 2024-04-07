@@ -26,6 +26,8 @@ export const UserItem: React.FC<UserItemProps> = ({
     const href = `/${username}`;
     const isActive = pathname === href;
 
+   /*  console.log("UserItem", {username, imageUrl, isLive, pathname, href, isActive}); */
+
     return (
         <Button
             asChild
