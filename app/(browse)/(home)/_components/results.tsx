@@ -4,7 +4,7 @@ import { ResultCard } from "./result-card";
 export const Results = async () => {
     const data = await getStreams();
 
-    console.log("DATA: ", data);
+/*     console.log("DATA: ", data); */
     return (
         <div className="">
             <h2>

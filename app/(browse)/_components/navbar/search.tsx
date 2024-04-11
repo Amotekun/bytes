@@ -15,7 +15,7 @@ export const Search = () => {
         e.preventDefault();
 
         if (!value) {
-            return ;
+            return;
         }
 
         const url = qs.stringifyUrl({

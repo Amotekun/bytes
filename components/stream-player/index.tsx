@@ -2,7 +2,7 @@
 
 import {LiveKitRoom} from "@livekit/components-react";
 import { useViewerToken } from "@/hooks/use-viewer-token";
-import { Stream, User } from "@prisma/client";
+import { Stream } from "@prisma/client";
 import { cn } from "@/lib/utils";
 import { Video } from "./video";
 import { Chat } from "./chat";
@@ -27,7 +27,7 @@ type CustomUser = {
     username: string;
     imageUrl: string;
     bio: string | null;
-    stream: Stream | null;
+    stream: CustomStream | null;
     _count: {followed: number}
 }
 interface StreamPlayerProps {
