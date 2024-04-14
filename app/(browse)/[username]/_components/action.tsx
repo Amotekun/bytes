@@ -27,7 +27,13 @@ export const Actions: React.FC<ActionProps> = ({
     const handleUnfollow = () => {
         startTransition(() => {
             unFollow(userId)
-                .then((data) => toast.success(`unfollowed ${data.followed.username}`))
+                .then((data) => {
+                    if (data) {
+                        toast.success(`unfollowed ${data.followed.username}`)
+                    } else {
+                        toast.error("failed to unfollow")
+                    }
+                })
                 .catch(() => toast.error("failed to unfollow"))
         })
     } 
@@ -35,7 +41,13 @@ export const Actions: React.FC<ActionProps> = ({
     const handleBlock = () => {
         startTransition(() => {
             onBlock(userId)
-                .then((data) => toast.success(`blocked ${data.blocked.username}`))
+                .then((data) => {
+                    if (data) {
+                        toast.success(`blocked ${data.blocked.username}`)
+                    } else {
+                        toast.error("failed to block")
+                    }
+                })
                 .catch(() => toast.error("failed to block"))
         })
     }
