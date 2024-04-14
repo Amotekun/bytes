@@ -3,11 +3,11 @@
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
@@ -69,7 +69,7 @@ model Stream {
 
   @@index([userId])
   @@index([ingressId])
-  @@fulltext([name])
+  @@index([name(ops: raw("gin_trgm_ops"))], type: Gin, name: "name_idx")
 }
 
 model Block {
