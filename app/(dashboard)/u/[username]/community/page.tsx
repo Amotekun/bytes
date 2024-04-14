@@ -3,7 +3,7 @@ import { DataTable } from "./_components/data-table";
 import { format } from "date-fns";
 import { columns } from "./_components/columns";
 
-export const CommunityPage = async () => {
+const CommunityPage = async () => {
     const blockedUsers = await getBlockedUsers();
 
     console.log("blockedUsers: ", blockedUsers)
